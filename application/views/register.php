@@ -81,15 +81,14 @@
   </div>
 </div>
 
-  <div class="form-group"> 
-  <label class="col-md-4 control-label">Area Of Intrest</label>
+   <div class="form-group"> 
+  <label class="col-md-4 control-label">Select You Interest</label>
     <div class="col-md-4 selectContainer">
     <div class="input-group">
         <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
-<div>
-    <label for="category">CATEGORY :</label>
-  <select name="cat">
-  <option>Not Selected</option>
+    <select name="catid" class="form-control selectpicker">
+      
+      <option>Not Selected</option>
     <?php
     foreach ($records->result() as $row)
 {
@@ -100,10 +99,7 @@
   <?php 
   }
 ?>
-  </select>
-  </div>    <select name="catid" class="form-control selectpicker">
-      <option>Select your intrest</option>
- 
+   
     </select>
   </div>
 </div>
@@ -296,8 +292,8 @@
             number: {
                 validators: {
                   stringLength: {
-                        min: 12, 
-                        max: 12,
+                        min: 10, 
+                        max: 10,
                     notEmpty: {
                         message: 'Please enter your Contact No.'
                      }

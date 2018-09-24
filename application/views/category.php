@@ -9,30 +9,7 @@ include 'head.php';?>
 display:none;
 }
 </style> 
-<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-<script type="text/javascript">
 
-$(function () {
-
-$('.showClick').click(function () {
-
-$('.hidden').show();
-
-$('.show').hide();
-
-});
-
-$('.hideClick').click(function () {
-
-$('.hidden').hide();
-
-$('.show').show();
-
-});
-
-});
-
-</script>
 </head>
 
   
@@ -56,32 +33,70 @@ include 'Sidebar.php';
           <!-- Breadcrumbs-->
           <ol class="breadcrumb">
             <li class="breadcrumb-item">
-              <a href="#">Dashboard</a>
+              <a href="#">Category</a>
             </li>
             <li class="breadcrumb-item active">Overview</li>
           </ol>
 
-          <!-- Icon Cards-->
-          <div class="row">
-            <div class="col-xl-3 col-sm-6 mb-3">
-              <div class="card text-white bg-primary o-hidden h-100">
-                <div class="card-body">
-                  <div class="card-body-icon">
-                    <i class="fas fa-fw fa-comments"></i>
-                  </div>
-                  <div class="mr-5">26 New Messages!</div>
-                </div>
-                <a class="card-footer text-white clearfix small z-1" href="#">
-                  <span class="float-left">View Details</span>
-                  <span class="float-right">
-                    <i class="fas fa-angle-right"></i>
-                  </span>
-                </a>
+
+
+
+  <form method="post" action="<?php echo base_url();?>welcome/category"> 
+<?php
+$row=$records->result();
+?>
+
+ <div class="form-group">
+  <label class="col-md-4 control-label">Category</label>  
+  <div class="col-md-4 inputGroupContainer">
+  <div class="input-group">
+  <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+  <input  name="category" placeholder="category..." class="form-control"  type="text" value="<?php echo $raw->catname; ?>">
+    </div>
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="col-md-4 control-label"></label>
+  <div class="col-md-4">
+    <button type="submit" class="btn btn-warning"  >Add..</button>
+  </div>
+</div>
+<div class="card mb-3">
+            <div class="card-header">
+              <i class="fas fa-table"></i>
+              Categories...</div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                  <thead>
+     <tr>
+                        <th>ID</th>
+                      <th>Category</th>
+                       <th>Actions</th>
+                    </tr>
+                  </thead>
+               
+                  <tbody>
+                                <?php
+    foreach ($records->result() as $row)
+{
+  ?>    <tr>
+                      <td><?php echo $row->catid; ?></td>
+                      <td> <?php echo $row->catname; ?></td>
+                      <th scope="col"><a href="<?php echo base_url();?>welcome/cdelete/<?php echo $row->catid?>">Delete</a>-
+<a href="<?php echo base_url();?>welcome/cedit/<?php echo $row->catid?>">Edit</a></th>
+                    </tr>
+                      <?php 
+  }
+?>
+                  </tbody>
+                </table>
               </div>
             </div>
-            
-          </div>
 
+</form>
+         
         </div>
         <!-- /.container-fluid -->
 
@@ -89,7 +104,7 @@ include 'Sidebar.php';
         <footer class="sticky-footer">
           <div class="container my-auto">
             <div class="copyright text-center my-auto">
-              <span>Copyright © Your Website 2018</span>
+              <span>Copyright Â© Your Website 2018</span>
             </div>
           </div>
         </footer>
@@ -112,7 +127,7 @@ include 'Sidebar.php';
           <div class="modal-header">
             <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
             <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">×</span>
+              <span aria-hidden="true">Ã—</span>
             </button>
           </div>
           <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>

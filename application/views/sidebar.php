@@ -11,9 +11,9 @@
             <span>Pages</span>
           </a>
           <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-            <h6 class="dropdown-header">Login Screens:</h6>
+            <h6 class="dropdown-header">Actions..</h6>
      
-            <a class="dropdown-item" href="<?php echo base_url();?>/welcome/Register"> Register</a>
+            <a class="dropdown-item" href="<?php echo base_url();?>/welcome/Cat">Category</a>
             <a class="dropdown-item" href="forgot-password.html">Forgot Password</a>
             <div class="dropdown-divider"></div>
             <h6 class="dropdown-header">Other Pages:</h6>

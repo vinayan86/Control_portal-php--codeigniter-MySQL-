@@ -20,9 +20,15 @@ class welcome extends CI_Controller {
 			}
 	public function reg()
 	{
-
-	$this->load->view('register');
 		$data['records']=$this->mod->catsel();
+	$this->load->view('register',$data);
+
+	}
+	public function cat()
+	{
+			$data['records']=$this->mod->catsel();
+			$this->load->view('category',$data);
+		
 	}
 	public function Register()
 	{
@@ -45,6 +51,7 @@ $s=array('name'=>$a,'hname'=>$b,'place'=>$c,'pin'=>$d,'number'=>$e,'mail'=>$f,'c
 $id=$this->mod->addreg($s);
 $log = array('uid' => $id,'username'=>$i,'password'=>$j,'role'=>0);
 $this->mod->addlog($log);
+redirect('index.php');
 	}
 	public function login()
 	{
@@ -62,8 +69,8 @@ $this->mod->addlog($log);
       <?php  }
         else
         {
-        //redirect(base_url('welcome_message')); 
-         $this->load->view('welcome_message'); 	
+      	$data['records']=$this->mod->catsel();
+         $this->load->view('welcome_message',$data); 	
      }
 	
 	}
@@ -73,6 +80,30 @@ $this->mod->addlog($log);
 $a = array('catname' => $cat );
 	 $this->load->model('mod');
 	$this->mod->addcat($a);
-	        $this->load->view('welcome_message');
+	$data['records']=$this->mod->catsel();
+	        $this->load->view('category',$data);
 	}
+
+	public function cdelete($id)
+			{
+				$this->load->model('mod');
+				$this->mod->delcat($id);
+					$data['records']=$this->mod->catsel();
+	        $this->load->view('category',$data);
+			}
+			public function cedit($id)
+			{
+				$this->load->model('mod');
+				$data['records']=$this->mod->catedit($id);
+				$this->load->view('category',$data);
+			}
+			public function updatecat()
+{
+	$a=$this->input->post('cid');
+	$b=$this->input->post('cname');
+	$this->load->model('mod');
+
+	$this->mod->catup($a,$b);
+	redirect('category');
+}	
 }

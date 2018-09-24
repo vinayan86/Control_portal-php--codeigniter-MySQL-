@@ -37,6 +37,26 @@ public function catsel()
     $query = $this->db->get('category');
     return $query;
     }
+    public function delcat($id)
+    {
+    $this->db->where('catid',$id);
+    $this->db->delete('category');
+    
+    }
+    public function catedit($id)
+    {
+    $this->db->select('*');
+    $this->db->where('catid',$id);
+    $query = $this->db->get('category');
+    return $query;
+    
+    }
+    public function catup($a,$b)
+    {
+        $this->db->set('catname',$b);
+        $this->db->where('catid',$a);
+    $this->db->update('category');
+    }
 }
 ?>
         
